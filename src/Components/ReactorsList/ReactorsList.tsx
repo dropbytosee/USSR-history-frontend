@@ -1,6 +1,6 @@
 import "./ReactorsList.sass"
 import SearchBar from "../SearchBar/SearchBar";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactorCard from "./ReactorCard/ReactorCard";
 import {iReactorsMock, requestTime} from "../../Consts";
 import {Reactor} from "../../Types";
@@ -27,7 +27,8 @@ const ReactorsList = () => {
                 return;
             }
 
-            const reactors: Reactor[] = await response.json()
+            const raw = await response.json()
+            const reactors = raw["reactors"]
 
             setReactors(reactors)
             setIsMock(false)
@@ -41,29 +42,34 @@ const ReactorsList = () => {
 
     const createMock = () => {
 
-        setIsMock(true);
-        setReactors(iReactorsMock)
+        setIsMock(true)
+        setReactors(iReactorsMock.filter(reactor => reactor.name.toLowerCase().includes(query.toLowerCase())))
 
     }
 
     useEffect(() => {
         searchReactors()
-    }, [query])
+    }, [])
 
     const cards = reactors.map(reactor  => (
         <ReactorCard reactor={reactor} key={reactor.id} isMock={isMock}/>
     ))
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        await searchReactors()
+    }
+
     return (
         <div className="cards-list-wrapper">
 
-            <div className="top">
+            <form className="top" onSubmit={handleSubmit}>
 
                 <h2>Поиск реакторов</h2>
 
                 <SearchBar query={query} setQuery={setQuery} />
 
-            </div>
+            </form>
 
             <div className="bottom">
 

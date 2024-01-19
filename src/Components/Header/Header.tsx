@@ -3,7 +3,7 @@ import "./Header.sass"
 const Header = () => {
     return (
         <div className="header-wrapper">
-            <h1>АЭС СССР и СНГ</h1>
+            <h1>Атомные электростанции СССР и СНГ</h1>
         </div>
     )
 }

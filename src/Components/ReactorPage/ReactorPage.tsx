@@ -37,17 +37,16 @@ const ReactorPage = ({ selectedReactor, setSelectedReactor }: { selectedReactor:
     };
 
     const CreateMock = () => {
-
-        if (id != undefined)
-        {
-            setSelectedReactor(iReactorsMock.find((reactor:Reactor) => reactor?.id == parseInt(id)))
-        }
-
+        id && setSelectedReactor(iReactorsMock.find((reactor:Reactor) => reactor?.id == parseInt(id)))
         setIsMock(true)
     }
 
     useEffect(() => {
         fetchData()
+
+        return () => {
+            setSelectedReactor(undefined)
+        }
     }, [])
 
     const img = `http://127.0.0.1:8000/api/reactors/${id}/image/`
@@ -69,26 +68,23 @@ const ReactorPage = ({ selectedReactor, setSelectedReactor }: { selectedReactor:
 
                 <div className="info-container">
 
-                    <h2 className="name">{selectedReactor?.name}</h2>
+                    <h2>{selectedReactor?.name}</h2>
 
                     <br />
 
-                    <h3>Физические характеристики</h3>
-
-                    <span>Максимальная тепловая мощность: { selectedReactor?.MaximumHeatOutput } МВт</span>
-                    <span>Электрическая мощность: { selectedReactor?.ElectricalPower } МВт</span>
+                    <span>Теплоноситель: { selectedReactor?.coolant }</span>
 
                     <br />
 
-                    <h3>Нейтронные характеристики</h3>
-                    <span>Максимальная плотность потока быстрых нейтронов: { selectedReactor?.MaximumNeutronFluxDensity }·10<sup>19</sup>м<sup>-2</sup>с<sup>-1</sup></span>
-                    <span>Средняя энергия нейтронов: { selectedReactor?.AverageNeutronEnergy } кэВ</span>
+                    <span>Топливо: { selectedReactor?.fuel }</span>
 
                     <br />
 
-                    <h3>Режим работы реактора</h3>
-                    <span>Продолжительность микрокампании: { selectedReactor?.MicrocampaniaDuration } суток</span>
-                    <span>Время между микрокомпаниями: { selectedReactor?.TimeBetweenMicroCompanies } суток</span>
+                    <span>Тепловая мощност: { selectedReactor?.thermal_power } МВт</span>
+
+                    <br />
+
+                    <span>Электрическая мощность: { selectedReactor?.electrical_power } МВт</span>
 
                 </div>
 

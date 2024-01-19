@@ -9,7 +9,7 @@ const SearchBar = ({ query, setQuery }: {query:string, setQuery: Dispatch<string
     }
 
     return (
-        <form className="search-bar-wrapper" action="/api/reactors/search" method="GET" onSubmit={(e) => e.preventDefault()} >
+        <div className="search-bar-wrapper" >
 
             <input
                 type="text"
@@ -24,7 +24,7 @@ const SearchBar = ({ query, setQuery }: {query:string, setQuery: Dispatch<string
                 <FaSearch className={"search-icon"}/>
             </button>
 
-        </form>
+        </div>
     )
 }
 
