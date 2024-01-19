@@ -2,9 +2,11 @@ export interface Reactor {
     id: number,
     name: string,
     status: number,
-    description: string,
-    heat_output: number,
-    image: string
+    image: string,
+    coolant: string,
+    fuel: string,
+    thermal_power: number,
+    electrical_power: number
 }
 
 export interface User {
@@ -23,7 +25,7 @@ export interface Station {
     date_complete: string,
     name: string,
     location: string,
-    opening_year: number
+    year: number
 }
 
 export interface Option {

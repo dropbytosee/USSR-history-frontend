@@ -88,7 +88,7 @@ const StationPage = () => {
                     {[2, 3, 4].includes(station.status) && <span>Дата формирования: {moment(station.date_formation).locale(ru()).format("D MMMM HH:mm")}</span>}
                     {completed && <span>Дата завершения: {moment(station.date_complete).locale(ru()).format("D MMMM HH:mm")}</span> }
                     {is_moderator && <span>Пользователь: {station.owner.name}</span> }
-                    {[2, 3, 4].includes(station.status) && <span>Результат проверки в архиве: {station.verify ? "Одобрено" : "Отклонено"}</span>}
+                    {[2, 3, 4].includes(station.status) && <span>Год ввода в строй: {station.year ? station.year : "Не определено"}</span>}
                 </div>
 
                 <div className="inputs-container">

@@ -42,11 +42,20 @@ export function useReactors() {
 		return data["reactors"]
 	}
 
+	const deleteReactor = async (reactor) => {
+		await api.delete(`reactors/${reactor.id}/delete/`, {
+			headers: {
+				'authorization': access_token
+			}
+		})
+	}
+
 	return {
 		reactors,
 		setReactors,
 		query,
 		setQuery,
-		searchReactors
+		searchReactors,
+		deleteReactor
 	};
 }

@@ -17,18 +17,20 @@ import StationPage from "./pages/StationPage/StationPage";
 import StationsPage from "./pages/StationsPage/StationsPage";
 import ReactorEditPage from "./pages/ReactorEditPage/ReactorEditPage";
 import ReactorAddPage from "./pages/ReactorAddPage/ReactorAddPage";
+import ReactorsList from "./pages/ReactorsPage/ReactorsList/ReactorsList";
+import ReactorsTableWrapper from "./pages/ReactorsPage/ReactorsTableWrapper/ReactorsTableWrapper";
 
 
 const TopPanelWrapper = () => {
 
-    const {is_authenticated, is_moderator} = useAuth()
+    const {is_authenticated} = useAuth()
 
     const location = useLocation()
 
     return (
         <div className="top-panel-wrapper">
             <Breadcrumbs />
-            {is_authenticated && !is_moderator && location.pathname.endsWith("reactors") && <StationConstructor /> }
+            {is_authenticated && (location.pathname.endsWith("reactors") || location.pathname.endsWith("reactors-table")) && <StationConstructor /> }
         </div>
     )
 }
@@ -61,7 +63,9 @@ function App() {
 
                                     <Route path="/profile" element={<ProfilePage />} />
 
-                                    <Route path="/reactors" element={<ReactorsPage />} />
+                                    <Route path="/reactors" element={<ReactorsList />} />
+
+                                    <Route path="/reactors-table" element={<ReactorsTableWrapper />} />
 
                                     <Route path="/reactors/add" element={<ReactorAddPage />} />
 

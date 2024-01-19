@@ -22,8 +22,10 @@ const ReactorEditPage = () => {
         reactor,
         fetchReactor,
         setName,
-        setDescription,
-        setHeatOutput,
+        setCoolant,
+        setFuel,
+        setThermalPower,
+        setElectricalPower,
         setImage
     } = useReactor()
 
@@ -45,8 +47,10 @@ const ReactorEditPage = () => {
         let form_data = new FormData()
 
         form_data.append('name', reactor.name)
-        form_data.append('description', reactor.description)
-        form_data.append('heat_output', reactor.heat_output)
+        form_data.append('coolant', reactor.coolant)
+        form_data.append('fuel', reactor.fuel)
+        form_data.append('thermal_power', reactor.thermal_power)
+        form_data.append('electrical_power', reactor.electrical_power)
 
         if (img != undefined) {
             form_data.append('image', img, img.name)
@@ -113,9 +117,13 @@ const ReactorEditPage = () => {
 
                     <CustomInput placeholder="Название" value={reactor.name} setValue={setName} />
 
-                    <CustomTextarea placeholder="Адрес" value={reactor.description} setValue={setDescription} />
+                    <CustomInput placeholder="Теплоноситель" value={reactor.coolant} setValue={setCoolant} />
 
-                    <CustomInput placeholder="Максимальная тепловая мощность" value={reactor.heat_output} setValue={setHeatOutput} />
+                    <CustomInput placeholder="Топливо" value={reactor.fuel} setValue={setFuel} />
+
+                    <CustomInput placeholder="Тепловая мощность" value={reactor.thermal_power} setValue={setThermalPower} />
+
+                    <CustomInput placeholder="Электрическая мощность" value={reactor.electrical_power} setValue={setElectricalPower} />
 
                     <div className="buttons-container">
 

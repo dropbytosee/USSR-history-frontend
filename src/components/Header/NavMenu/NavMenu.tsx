@@ -6,7 +6,7 @@ import Hamburger from "../Hamburger/Hamburger";
 
 const NavMenu = () => {
 
-    const {is_authenticated, auth, user_name} = useAuth()
+    const {is_moderator, is_authenticated, auth, user_name} = useAuth()
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -22,6 +22,12 @@ const NavMenu = () => {
                 <Link to="/reactors" className="menu-item" onClick={(e) => {setIsOpen(false)}}>
                     <span>Реакторы</span>
                 </Link>
+
+                {is_moderator &&
+                    <Link to="/reactors-table" className="menu-item" onClick={(e) => {setIsOpen(false)}}>
+                        <span>Таблица реакторов</span>
+                    </Link>
+                }
 
                 {is_authenticated &&
                     <Link to="/stations" className="menu-item" onClick={(e) => {setIsOpen(false)}}>

@@ -25,7 +25,7 @@ const ReactorsList = () => {
     }
 
     const cards = data.map(reactor  => (
-        <ReactorCard reactor={reactor} key={reactor.id}/>
+        <ReactorCard reactor={reactor} key={reactor.id} refetch={refetch}/>
     ))
 
     return (

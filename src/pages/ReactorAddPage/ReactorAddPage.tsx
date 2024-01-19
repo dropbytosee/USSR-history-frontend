@@ -17,8 +17,10 @@ const ReactorAddPage = () => {
     const navigate = useNavigate()
 
     const [name, setName] = useState("")
-    const [description, setDescription] = useState("")
-    const [heat_output, setHeatOutput] = useState("")
+    const [coolant, setCoolant] = useState("")
+    const [fuel, setFuel] = useState("")
+    const [thermal_power, setThermalPower] = useState("")
+    const [electrical_power, setElectricalPower] = useState("")
 
     const [imgFile, setImgFile] = useState<File | undefined>()
     const [imgURL, setImgURL] = useState<string | undefined>(mock)
@@ -51,8 +53,10 @@ const ReactorAddPage = () => {
         const form_data = new FormData()
 
         form_data.append('name', name)
-        form_data.append('description', description)
-        form_data.append('heat_output', heat_output)
+        form_data.append('coolant', coolant)
+        form_data.append('fuel', fuel)
+        form_data.append('thermal_power', thermal_power)
+        form_data.append('electrical_power', electrical_power)
 
         if (imgFile != undefined) {
             form_data.append('image', imgFile, imgFile.name)
@@ -87,9 +91,13 @@ const ReactorAddPage = () => {
 
                     <CustomInput placeholder="Название" value={name} setValue={setName} />
 
-                    <CustomTextarea placeholder="Описание" value={description} setValue={setDescription} />
+                    <CustomTextarea placeholder="Описание" value={coolant} setValue={setCoolant} />
 
-                    <CustomInput placeholder="Максимальная тепловая мощность" value={heat_output} setValue={setHeatOutput} />
+                    <CustomInput placeholder="Топливо" value={fuel} setValue={setFuel} />
+
+                    <CustomInput placeholder="Тепловая мощность" value={thermal_power} setValue={setThermalPower} />
+
+                    <CustomInput placeholder="Электрическая мощность" value={electrical_power} setValue={setElectricalPower} />
 
                     <div className="buttons-container">
 

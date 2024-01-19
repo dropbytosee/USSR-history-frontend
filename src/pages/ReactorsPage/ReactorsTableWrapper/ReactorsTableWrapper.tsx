@@ -1,6 +1,7 @@
 import {useReactors} from "../../../hooks/reactors/useReactors";
 import {useQuery} from "react-query";
 import ReactorsTable from "./ReactorsTable/ReactorsTable";
+import "./ReactorsTableWrapper.sass"
 
 const ReactorsTableWrapper = () => {
 
@@ -23,7 +24,7 @@ const ReactorsTableWrapper = () => {
     }
 
     return (
-        <div>
+        <div className="reactors-wrapper">
             <ReactorsTable isLoading={isLoading} data={data} isSuccess={isSuccess} refetch={refetch} />
         </div>
     )

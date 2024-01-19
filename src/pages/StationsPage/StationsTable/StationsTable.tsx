@@ -45,14 +45,14 @@ const StationsTable = () => {
             Cell: ({ value }) => { return moment(value).locale(ru()).format("D MMMM HH:mm") }
         },
         {
-            Header: "Результат проверки",
-            accessor: "verify",
+            Header: "Год ввода в строй",
+            accessor: "year",
             Cell: ({ value }) => {
                 if (!value) {
-                    return "Отклонено"
+                    return "Не определено"
                 }
 
-                return "Одобрено"
+                return value
             }
         }
     ]

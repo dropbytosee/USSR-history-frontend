@@ -2,8 +2,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
 	updateReactor,
 	updateName,
-	updateDescription,
-	updateHeatOutput,
+	updateCoolant,
+	updateFuel,
+	updateThermalPower,
+	updateElectricalPower,
 	updateImage
 } from "../../store/reactors/reactorSlice";
 import {api} from "../../utils/api";
@@ -21,12 +23,20 @@ export function useReactor() {
 		dispatch(updateName(value))
 	}
 
-	const setDescription = (value) => {
-		dispatch(updateDescription(value))
+	const setCoolant = (value) => {
+		dispatch(updateCoolant(value))
 	}
 
-	const setHeatOutput = (value) => {
-		dispatch(updateHeatOutput(value))
+	const setFuel = (value) => {
+		dispatch(updateFuel(value))
+	}
+
+	const setThermalPower = (value) => {
+		dispatch(updateThermalPower(value))
+	}
+
+	const setElectricalPower = (value) => {
+		dispatch(updateElectricalPower(value))
 	}
 
 	const setImage = (value) => {
@@ -46,8 +56,10 @@ export function useReactor() {
 		setReactor,
 		fetchReactor,
 		setName,
-		setDescription,
-		setHeatOutput,
+		setCoolant,
+		setFuel,
+		setThermalPower,
+		setElectricalPower,
 		setImage
 	};
 }

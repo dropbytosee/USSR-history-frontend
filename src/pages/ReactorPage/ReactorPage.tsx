@@ -7,10 +7,13 @@ const ReactorPage = () => {
 
     const { id } = useParams<{id: string}>();
     
-    const {reactor, fetchReactor} = useReactor()
+    const {reactor, fetchReactor, setReactor} = useReactor()
     
     useEffect(() => {
         id && fetchReactor(id)
+        return () => {
+            setReactor(undefined)
+        }
     }, [])
 
     if (reactor == undefined) {
@@ -40,18 +43,26 @@ const ReactorPage = () => {
 
                 <div className="info-container">
 
-                    <h2>{reactor.name}</h2>
+                    <h2>{reactor?.name}</h2>
 
                     <br />
 
-                    <span>Описание: {reactor.description}</span>
+                    <span>Теплоноситель: { reactor?.coolant }</span>
 
                     <br />
 
-                    <span>Максимальная тепловая мощность: {reactor.heat_output} МВт</span>
+                    <span>Топливо: { reactor?.fuel }</span>
+
+                    <br />
+
+                    <span>Тепловая мощност: { reactor?.thermal_power } МВт</span>
+
+                    <br />
+
+                    <span>Электрическая мощность: { reactor?.electrical_power } МВт</span>
 
                 </div>
-
+                
             </div>
 
         </div>

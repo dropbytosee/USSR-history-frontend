@@ -14,11 +14,17 @@ const reactorSlice = createSlice({
 		updateName(state, action) {
 			state.reactor.name = action.payload
 		},
-		updateDescription(state, action) {
-			state.reactor.description = action.payload
+		updateCoolant(state, action) {
+			state.reactor.coolant = action.payload
 		},
-		updateHeatOutput(state, action) {
-			state.reactor.heat_output = action.payload
+		updateFuel(state, action) {
+			state.reactor.fuel = action.payload
+		},
+		updateThermalPower(state, action) {
+			state.reactor.thermal_power = action.payload
+		},
+		updateElectricalPower(state, action) {
+			state.reactor.electrical_power = action.payload
 		},
 		updateImage(state, action) {
 			state.reactor.image = action.payload
@@ -29,8 +35,10 @@ const reactorSlice = createSlice({
 export const {
 	updateReactor,
 	updateName,
-	updateDescription,
-	updateHeatOutput,
+	updateCoolant,
+	updateFuel,
+	updateThermalPower,
+	updateElectricalPower,
 	updateImage
 } = reactorSlice.actions;
 

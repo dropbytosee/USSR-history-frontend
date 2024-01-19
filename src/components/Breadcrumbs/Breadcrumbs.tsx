@@ -19,6 +19,7 @@ const Breadcrumbs = () => {
 
     const topics = {
         "reactors": "Реакторы",
+        "reactors-table": "Таблица реакторов",
         "stations": "АЭС",
         "home": "Главная",
         "login": "Вход",
